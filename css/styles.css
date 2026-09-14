@@ -1229,8 +1229,9 @@ a { text-decoration: none; color: inherit; }
   position: relative;
   display: grid;
   width: 100%;
-  gap: 20px;
+  gap: 16px;
   padding-inline: 20px;
+  align-items: start;
 }
 
 .about-heading {
@@ -1262,6 +1263,8 @@ a { text-decoration: none; color: inherit; }
   flex-direction: column;
   gap: 0;
   max-width: 760px;
+  margin: 0;
+  padding: 0;
 }
 
 .about-text p {
@@ -1282,41 +1285,6 @@ a { text-decoration: none; color: inherit; }
   height: 1px;
   width: 100%;
   background: linear-gradient(90deg, #e3e7ed 0%, rgba(227, 231, 237, 0.2) 100%);
-}
-
-.about-logos {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 22px;
-  padding: 12px 16px;
-  border-radius: 14px;
-  border: 1px solid #eef2f6;
-  background: #f8fafc;
-  box-shadow: 0 4px 14px rgba(14, 21, 38, 0.04);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.about-logos:hover {
-  border-color: rgba(23, 165, 251, 0.25);
-  box-shadow: 0 8px 20px rgba(14, 21, 38, 0.08);
-  transform: translateY(-2px);
-}
-
-.about-logos img:first-child {
-  height: 24px;
-  width: auto;
-}
-
-.about-logos img:last-child {
-  height: 20px;
-  width: auto;
-}
-
-.about-logos span {
-  height: 18px;
-  width: 1px;
-  background: #d8dee8;
 }
 
 .speakers-section {
@@ -1583,9 +1551,6 @@ a { text-decoration: none; color: inherit; }
   .about-text p,
   .about-lead { font-size: 16px; line-height: 1.7; }
   .about-divider { margin-block: 22px; }
-  .about-logos { margin-top: 28px; padding: 14px 18px; }
-  .about-logos img:first-child { height: 28px; }
-  .about-logos img:last-child { height: 24px; }
   .speakers-section { margin-top: 60px; padding-inline: 40px; }
   .speakers-section h2 { margin-bottom: 30px; font-size: 40px; line-height: 48px; }
 }
@@ -1598,13 +1563,22 @@ a { text-decoration: none; color: inherit; }
   }
 
   .about-heading {
-    position: sticky;
-    top: calc(var(--header-h) + 24px);
+    position: static;
+    top: auto;
+  }
+
+  .about-heading h2 {
+    line-height: 1.15;
   }
 
   .about-text {
     max-width: none;
-    padding-top: 6px;
+    padding-top: 0;
+  }
+
+  /* Keep heading top-aligned with first text line */
+  .about-accent {
+    margin-top: 2px;
   }
 }
 

@@ -89,7 +89,6 @@
       ".about-lead",
       ".about-divider",
       ".about-text > p:not(.about-lead)",
-      ".about-logos",
       ".speakers-section > h2",
       ".agenda-header > h2",
       ".agenda-header > p",
