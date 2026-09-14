@@ -91,7 +91,7 @@ export default function Footer() {
 
         <div className="flex flex-col items-center md:items-end">
           <img
-            src="/assets/logo-ck-color.png"
+            src="/assets/logo-ck-color.svg"
             alt="CloudKeeper"
             width={174}
             height={38}
