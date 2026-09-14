@@ -39,7 +39,7 @@ body {
   overflow-x: clip;
   background: #ffffff;
   color: #000000;
-  font-family: var(--font-metropolis), "Avenir Next", sans-serif;
+  font-family: var(--font-metropolis), Arial, Helvetica, sans-serif;
 }
 
 p,

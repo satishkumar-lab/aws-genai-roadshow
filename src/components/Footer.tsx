@@ -23,7 +23,7 @@ const SOCIAL = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white">
+    <footer className="relative z-10 border-t border-[#e6ecf1] bg-white">
       <div className="mx-auto flex min-h-[90px] w-full min-w-0 max-w-[1440px] flex-col items-center justify-between gap-6 px-5 py-6 md:flex-row md:px-[60px]">
         <div className="flex max-w-full flex-wrap items-center justify-center gap-[19px]">
           <p className="font-[family-name:var(--font-roboto)] text-[14px] text-black">
@@ -37,7 +37,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={item.label}
-                className="relative size-8 shrink-0"
+                className="relative block size-8 shrink-0"
               >
                 {item.label === "X" ? (
                   <>
@@ -57,7 +57,13 @@ export default function Footer() {
                     />
                   </>
                 ) : (
-                  <img src={item.src} alt="" width={32} height={32} className="size-8" />
+                  <img
+                    src={item.src}
+                    alt=""
+                    width={32}
+                    height={32}
+                    className="size-8"
+                  />
                 )}
               </a>
             ))}
@@ -91,7 +97,9 @@ export default function Footer() {
             height={38}
             className="h-[38px] w-auto"
           />
-          <p className="mt-1 text-[14.7px] font-medium text-[#253e66]">Copyright © 2026</p>
+          <p className="mt-1 text-[14.7px] font-medium text-[#253e66]">
+            Copyright © 2026
+          </p>
         </div>
       </div>
     </footer>

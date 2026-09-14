@@ -1,3 +1,14 @@
+"use client";
+
+import { motion } from "framer-motion";
+import {
+  easeOut,
+  fadeUp,
+  Stagger,
+  StaggerItem,
+  viewportOnce,
+} from "./motion";
+
 const SESSIONS = [
   {
     kicker: "SESSION 1",
@@ -26,7 +37,7 @@ export default function Agenda() {
   return (
     <section
       id="agenda"
-      className="relative overflow-hidden bg-[#0b1730] py-12 md:py-20"
+      className="relative scroll-mt-[66px] overflow-hidden bg-[#0b1730] py-10 md:py-20"
       style={{
         backgroundImage: [
           "linear-gradient(90deg, rgb(10, 37, 83) 0%, rgb(10, 37, 83) 100%)",
@@ -36,7 +47,6 @@ export default function Agenda() {
         ].join(", "),
       }}
     >
-      {/* Blue glow — top left */}
       <div
         className="pointer-events-none absolute -left-10 -top-[150px] size-[380px] rounded-[200px] md:size-[532px]"
         style={{
@@ -45,7 +55,6 @@ export default function Agenda() {
         }}
         aria-hidden
       />
-      {/* Blue glow — bottom right */}
       <div
         className="pointer-events-none absolute -bottom-[190px] -right-[50px] size-[420px] rounded-[200px] md:size-[600px]"
         style={{
@@ -54,7 +63,6 @@ export default function Agenda() {
         }}
         aria-hidden
       />
-      {/* Network graphic — bottom right (Figma Layer_1, rotated −154°) */}
       <div
         className="pointer-events-none absolute bottom-[-387px] right-[-432px] hidden h-[714px] w-[944px] items-center justify-center md:flex"
         aria-hidden
@@ -69,7 +77,6 @@ export default function Agenda() {
           />
         </div>
       </div>
-      {/* Orange flourish — top right */}
       <img
         src="/assets/agenda-flourish.svg"
         alt=""
@@ -79,16 +86,24 @@ export default function Agenda() {
         aria-hidden
       />
 
-      {/* Figma: full-bleed 1440 with px-100 only — no nested max-w-1240 */}
-      <div className="relative mx-auto flex w-full min-w-0 max-w-[1440px] flex-col gap-10 px-5 md:gap-16 md:px-10 xl:px-[100px]">
-        <div className="flex flex-col items-start justify-between gap-3 md:flex-row md:items-end">
-          <h2 className="text-[32px] font-bold leading-[48px] tracking-[-1px] text-[#f6f4ee] md:text-[40px]">
+      <div className="relative mx-auto flex w-full min-w-0 max-w-[1440px] flex-col gap-6 px-5 md:gap-16 md:px-10 xl:px-[100px]">
+        <motion.div
+          className="flex flex-col items-start justify-between gap-1.5 md:flex-row md:items-end md:gap-3"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          transition={{ duration: 0.7, ease: easeOut }}
+        >
+          <h2 className="text-[28px] font-bold leading-tight tracking-[-1px] text-[#f6f4ee] md:text-[40px] md:leading-[48px]">
             What you&apos;ll explore
           </h2>
-          <p className="text-[15px] text-white">Three sessions · Half day</p>
-        </div>
+          <p className="text-[13px] text-white/80 md:text-[15px] md:text-white">
+            Three sessions · Half day
+          </p>
+        </motion.div>
 
-        <div>
+        <Stagger className="flex flex-col gap-3 md:gap-0">
           {SESSIONS.map((session, index) => {
             const isGreen = session.tone === "green";
             const accent = isGreen ? "#00c389" : "#fff4e0";
@@ -100,51 +115,50 @@ export default function Agenda() {
               : "group-hover:shadow-[0_0_12px_rgba(255,244,224,0.55)]";
 
             return (
-              <article
-                key={session.title}
-                className={`group relative flex cursor-default flex-col gap-4 border-t border-[rgba(246,244,238,0.05)] py-8 pl-[13px] transition-[background-color,border-color] duration-300 ease-out md:flex-row md:gap-12 md:py-10 ${
-                  index === SESSIONS.length - 1 ? "border-b" : ""
-                } hover:border-[rgba(246,244,238,0.12)] hover:bg-[rgba(255,255,255,0.025)]`}
-              >
-                {/* Left accent bar — full row height, 10px gap via pl-[13px] (3px bar + 10px) */}
-                <span
-                  className="pointer-events-none absolute inset-y-0 left-0 w-[3px] origin-top scale-y-0 opacity-0 transition-all duration-300 ease-out group-hover:scale-y-100 group-hover:opacity-100"
-                  style={{ backgroundColor: accent }}
-                  aria-hidden
-                />
-                {/* Soft directional wash */}
-                <span
-                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
-                  style={{ background: wash }}
-                  aria-hidden
-                />
+              <StaggerItem key={session.title}>
+                <article
+                  className={`group relative flex cursor-default flex-col gap-2.5 rounded-xl border border-[rgba(246,244,238,0.08)] bg-white/[0.03] p-4 pl-[13px] transition-[background-color,border-color] duration-300 ease-out md:gap-4 md:rounded-none md:border-x-0 md:border-b-0 md:border-t md:border-[rgba(246,244,238,0.05)] md:bg-transparent md:px-0 md:py-10 md:pl-[13px] md:flex-row md:gap-12 ${
+                    index === SESSIONS.length - 1 ? "md:border-b" : ""
+                  } hover:border-[rgba(246,244,238,0.14)] hover:bg-[rgba(255,255,255,0.04)] md:hover:border-[rgba(246,244,238,0.12)] md:hover:bg-[rgba(255,255,255,0.025)]`}
+                >
+                  <span
+                    className="pointer-events-none absolute inset-y-0 left-0 w-[3px] origin-top scale-y-100 rounded-l-xl opacity-100 md:scale-y-0 md:rounded-none md:opacity-0 md:transition-all md:duration-300 md:ease-out md:group-hover:scale-y-100 md:group-hover:opacity-100"
+                    style={{ backgroundColor: accent }}
+                    aria-hidden
+                  />
+                  <span
+                    className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
+                    style={{ background: wash }}
+                    aria-hidden
+                  />
 
-                <div className="relative z-[1] flex w-auto shrink-0 flex-col gap-2.5 transition-transform duration-300 ease-out group-hover:translate-x-1 md:w-[160px] md:group-hover:translate-x-1.5">
-                  <p className="text-[14px] tracking-[1px]" style={{ color: accent }}>
-                    {session.kicker}
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <span
-                      className={`size-2 rounded-[4px] transition-[transform,box-shadow] duration-300 ease-out group-hover:scale-[1.35] ${dotGlowClass}`}
-                      style={{ backgroundColor: accent }}
-                    />
-                    <p className="text-[14px]" style={{ color: accent }}>
-                      {session.duration}
+                  <div className="relative z-[1] flex w-auto shrink-0 flex-row items-center gap-3 transition-transform duration-300 ease-out group-hover:translate-x-1 md:w-[160px] md:flex-col md:items-start md:gap-2.5 md:group-hover:translate-x-1.5">
+                    <p className="text-[12px] tracking-[1px] md:text-[14px]" style={{ color: accent }}>
+                      {session.kicker}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`size-1.5 rounded-[4px] transition-[transform,box-shadow] duration-300 ease-out group-hover:scale-[1.35] md:size-2 ${dotGlowClass}`}
+                        style={{ backgroundColor: accent }}
+                      />
+                      <p className="text-[12px] md:text-[14px]" style={{ color: accent }}>
+                        {session.duration}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="relative z-[1] flex min-w-0 flex-1 flex-col gap-1.5 transition-transform duration-300 ease-out group-hover:translate-x-0.5 md:gap-3 md:group-hover:translate-x-1">
+                    <h3 className="text-[17px] font-medium leading-snug tracking-[-0.3px] text-[#f6f4ee] transition-colors duration-300 group-hover:text-white md:text-[24px] md:leading-8">
+                      {session.title}
+                    </h3>
+                    <p className="text-[13px] leading-[1.5] text-[#8695af] transition-colors duration-300 group-hover:text-[#b7c4db] md:text-[16px] md:leading-[1.6]">
+                      {session.body}
                     </p>
                   </div>
-                </div>
-                <div className="relative z-[1] flex min-w-0 flex-1 flex-col gap-3 transition-transform duration-300 ease-out group-hover:translate-x-0.5 md:group-hover:translate-x-1">
-                  <h3 className="text-[22px] font-medium leading-8 tracking-[-0.3px] text-[#f6f4ee] transition-colors duration-300 group-hover:text-white md:text-[24px]">
-                    {session.title}
-                  </h3>
-                  <p className="text-[16px] leading-[1.6] text-[#8695af] transition-colors duration-300 group-hover:text-[#b7c4db]">
-                    {session.body}
-                  </p>
-                </div>
-              </article>
+                </article>
+              </StaggerItem>
             );
           })}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

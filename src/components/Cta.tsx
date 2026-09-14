@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { easeOut, fadeUp, ScaleIn, viewportOnce } from "./motion";
 
 export default function Cta() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -33,7 +35,6 @@ export default function Cta() {
       ref={sectionRef}
       className="relative isolate overflow-hidden bg-[#0a2553] px-5 py-[60px] text-center md:py-[72px]"
     >
-      {/* Layered atmosphere */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -47,7 +48,6 @@ export default function Cta() {
         aria-hidden
       />
 
-      {/* Soft vignette so edges feel cinematic */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -57,7 +57,6 @@ export default function Cta() {
         aria-hidden
       />
 
-      {/* Center pink / magenta glow */}
       <img
         src="/assets/cta-glow.svg"
         alt=""
@@ -66,7 +65,6 @@ export default function Cta() {
         className="cta-glow-pulse pointer-events-none absolute left-[calc(50%+50px)] top-[calc(50%+50px)] hidden size-[520px] max-w-none -translate-x-1/2 -translate-y-1/2 opacity-70 md:block lg:size-[700px]"
         aria-hidden
       />
-      {/* Center blue glow */}
       <img
         src="/assets/cta-glow-blue.svg"
         alt=""
@@ -76,7 +74,6 @@ export default function Cta() {
         aria-hidden
       />
 
-      {/* Neural network graphic — left (Figma Layer_1, rotated) */}
       <div
         className="cta-network-drift pointer-events-none absolute left-[-84px] top-[-24px] hidden h-[673px] w-[701px] items-center justify-center md:flex"
         aria-hidden
@@ -92,7 +89,6 @@ export default function Cta() {
         </div>
       </div>
 
-      {/* Extra soft blue orb — left, for depth without the noisy PNG */}
       <div
         className="pointer-events-none absolute -left-24 top-1/4 hidden size-[320px] rounded-full blur-3xl md:block"
         style={{
@@ -102,7 +98,6 @@ export default function Cta() {
         aria-hidden
       />
 
-      {/* Orange AWS-style flourish — bottom right, nudged 20px down */}
       <img
         src="/assets/cta-corner.svg"
         alt=""
@@ -113,7 +108,14 @@ export default function Cta() {
       />
 
       <div className="relative z-[1] mx-auto flex w-full max-w-[720px] flex-col items-center gap-10">
-        <div className="flex flex-col items-center gap-[25px]">
+        <motion.div
+          className="flex flex-col items-center gap-[25px]"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          transition={{ duration: 0.7, ease: easeOut }}
+        >
           <div className="flex flex-col items-center gap-2 md:gap-2.5">
             <div className="flex flex-col items-center gap-[11px]">
               <img
@@ -152,23 +154,25 @@ export default function Cta() {
               production on AWS.
             </p>
           </div>
-        </div>
+        </motion.div>
 
-        <a
-          href="#register"
-          className="group/cta inline-flex h-[46px] w-[211px] items-center justify-center gap-2 rounded-lg bg-[#17a5fb] px-5 text-[16px] font-semibold text-white shadow-none transition-[background-color,box-shadow] duration-200 hover:bg-[#0f96ea] hover:shadow-[0_10px_28px_rgba(23,165,251,0.35)]"
-        >
-          Apply to Attend
-          <span className="relative size-[16.67px] shrink-0 overflow-visible">
-            <img
-              src="/assets/ic-arrow.svg"
-              alt=""
-              width={17}
-              height={17}
-              className="size-[16.67px] transition-transform duration-200 ease-out group-hover/cta:translate-x-1"
-            />
-          </span>
-        </a>
+        <ScaleIn delay={0.12}>
+          <a
+            href="#register"
+            className="group/cta inline-flex h-[46px] w-[211px] items-center justify-center gap-2 rounded-lg bg-[#17a5fb] px-5 text-[16px] font-semibold text-white shadow-none transition-[background-color,box-shadow] duration-200 hover:bg-[#0f96ea] hover:shadow-[0_10px_28px_rgba(23,165,251,0.35)]"
+          >
+            Apply to Attend
+            <span className="relative size-[16.67px] shrink-0 overflow-visible">
+              <img
+                src="/assets/ic-arrow.svg"
+                alt=""
+                width={17}
+                height={17}
+                className="size-[16.67px] transition-transform duration-200 ease-out group-hover/cta:translate-x-1"
+              />
+            </span>
+          </a>
+        </ScaleIn>
       </div>
     </section>
   );

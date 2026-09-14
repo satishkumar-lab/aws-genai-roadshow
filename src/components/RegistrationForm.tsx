@@ -199,12 +199,12 @@ function Field({
   const invalid = Boolean(error);
 
   return (
-    <label className={`group/field flex w-full flex-col gap-1 ${className}`}>
-      <span className="text-[13px] font-medium text-black transition-colors duration-200 group-focus-within/field:text-[#0e1526]">
+    <label className={`group/field flex w-full min-w-0 flex-col gap-0.5 md:gap-1 ${className}`}>
+      <span className="text-[12px] font-medium leading-none text-black transition-colors duration-200 group-focus-within/field:text-[#0e1526] md:text-[13px]">
         {label}
       </span>
       <span
-        className={`flex h-[36px] items-center gap-1 overflow-hidden rounded-lg border bg-[#fbfcfe] py-2 pl-3 pr-[14px] transition-all duration-200 ease-out ${
+        className={`flex h-[32px] items-center gap-1 overflow-hidden rounded-lg border bg-[#fbfcfe] py-1.5 pl-2.5 pr-2.5 transition-all duration-200 ease-out md:h-[36px] md:py-2 md:pl-3 md:pr-[14px] ${
           invalid
             ? "border-[#dc2626] bg-[#fef2f2]"
             : "border-[#d8dee8] group-hover/field:border-[#17a5fb] group-focus-within/field:border-[#17a5fb] group-focus-within/field:bg-white"
@@ -216,7 +216,7 @@ function Field({
             alt=""
             width={16}
             height={16}
-            className="size-4 shrink-0 transition-transform duration-200 group-hover/field:scale-105 group-focus-within/field:scale-105"
+            className="hidden size-4 shrink-0 transition-transform duration-200 group-hover/field:scale-105 group-focus-within/field:scale-105 md:block"
           />
         ) : null}
         <input
@@ -229,11 +229,15 @@ function Field({
           onBlur={onBlur}
           aria-invalid={invalid}
           aria-describedby={invalid ? `${id}-error` : undefined}
-          className="min-w-0 flex-1 bg-transparent text-[14px] text-black outline-none placeholder:text-[#8a93a5]"
+          className="min-w-0 flex-1 bg-transparent text-[13px] text-black outline-none placeholder:text-[#8a93a5] md:text-[14px]"
         />
       </span>
       {error ? (
-        <span id={`${id}-error`} className="text-[12px] leading-snug text-[#dc2626]" role="alert">
+        <span
+          id={`${id}-error`}
+          className="text-[11px] leading-snug text-[#dc2626] md:text-[12px]"
+          role="alert"
+        >
           {error}
         </span>
       ) : null}
@@ -356,7 +360,7 @@ export default function RegistrationForm() {
   if (submitted) {
     return (
       <div
-        id="register"
+        id="register-form"
         className="success-card relative z-10 flex w-full min-w-0 max-w-[554px] flex-col items-center justify-center overflow-hidden rounded-2xl bg-white px-5 py-14 shadow-[0px_24px_60px_rgba(11,23,48,0.18)] md:min-h-[636px] md:px-9 md:py-16"
         role="status"
         aria-live="polite"
@@ -403,27 +407,27 @@ export default function RegistrationForm() {
 
   return (
     <form
-      id="register"
+      id="register-form"
       noValidate
       onSubmit={handleSubmit}
-      className="relative z-10 flex w-full min-w-0 max-w-[554px] flex-col gap-5 rounded-2xl bg-white p-5 shadow-[0px_24px_30px_rgba(11,23,48,0.18)] md:gap-6 md:p-8"
+      className="relative z-10 flex w-full min-w-0 max-w-[554px] flex-col gap-3 rounded-2xl bg-white p-4 shadow-[0px_24px_30px_rgba(11,23,48,0.18)] sm:gap-5 sm:p-5 md:gap-6 md:p-8"
     >
-      <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-1.5">
-        <h2 className="flex-1 text-[22px] font-bold tracking-[-0.12px] text-[#292929] sm:text-[24px]">
+      <div className="flex items-end justify-between gap-2">
+        <h2 className="min-w-0 flex-1 text-[18px] font-bold leading-tight tracking-[-0.12px] text-[#292929] sm:text-[22px] md:text-[24px]">
           Register your interest
         </h2>
-        <p className="shrink-0 text-[12px] text-[#828282] sm:whitespace-nowrap">
-          All fields are mandatory
-          <span className="ml-0.5 text-[13px] font-bold text-[#ed0082]">*</span>
+        <p className="shrink-0 pb-0.5 text-[10px] leading-none text-[#828282] sm:text-[12px]">
+          All fields mandatory
+          <span className="ml-0.5 text-[12px] font-bold text-[#ed0082] sm:text-[13px]">*</span>
         </p>
       </div>
 
-      <div className="flex w-full flex-col gap-4">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="flex w-full flex-col gap-2.5 sm:gap-4">
+        <div className="grid grid-cols-2 gap-x-2.5 gap-y-2.5 sm:gap-4">
           <Field
             id="name"
             label="Name"
-            placeholder="Your full name"
+            placeholder="Full name"
             icon="/assets/ic-user.svg"
             value={form.name}
             error={errors.name}
@@ -434,7 +438,7 @@ export default function RegistrationForm() {
             id="email"
             label="Work Email"
             type="email"
-            placeholder="Work email address"
+            placeholder="Work email"
             icon="/assets/ic-email.svg"
             value={form.email}
             error={errors.email}
@@ -453,24 +457,26 @@ export default function RegistrationForm() {
           onBlur={blur("organization")}
         />
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-x-2.5 gap-y-2.5 sm:gap-4">
           <Field
             id="role"
             label="Role"
-            placeholder="e.g. Developer, Manager"
+            placeholder="e.g. Developer"
             value={form.role}
             error={errors.role}
             onChange={update("role")}
             onBlur={blur("role")}
           />
-          <div className="relative flex w-full flex-col gap-1">
-            <span className="text-[13px] font-medium text-black">Company type</span>
+          <div className="relative flex w-full min-w-0 flex-col gap-0.5 md:gap-1">
+            <span className="text-[12px] font-medium leading-none text-black md:text-[13px]">
+              Company type
+            </span>
             <button
               type="button"
               onClick={() => setOpen((value) => !value)}
               aria-invalid={Boolean(errors.companyType)}
               aria-describedby={errors.companyType ? "companyType-error" : undefined}
-              className={`flex h-[36px] w-full items-center justify-center overflow-hidden rounded-lg border bg-[#fbfcfe] px-[14px] py-2 text-left transition-all duration-200 ease-out ${
+              className={`flex h-[32px] w-full items-center justify-center overflow-hidden rounded-lg border bg-[#fbfcfe] px-2.5 py-1.5 text-left transition-all duration-200 ease-out md:h-[36px] md:px-[14px] md:py-2 ${
                 errors.companyType
                   ? "border-[#dc2626] bg-[#fef2f2]"
                   : open
@@ -479,7 +485,7 @@ export default function RegistrationForm() {
               }`}
             >
               <span
-                className={`min-w-0 flex-1 truncate text-[14px] ${
+                className={`min-w-0 flex-1 truncate text-[13px] md:text-[14px] ${
                   companyType ? "text-black" : "text-[#8a93a5]"
                 }`}
               >
@@ -504,7 +510,7 @@ export default function RegistrationForm() {
                       clearError("companyType");
                       setOpen(false);
                     }}
-                    className={`w-full px-[14px] py-3 text-left text-[14px] text-[#1a1a1a] transition-colors duration-150 hover:bg-[#edf9ff] hover:text-[#17a5fb] ${
+                    className={`w-full px-3 py-2.5 text-left text-[13px] text-[#1a1a1a] transition-colors duration-150 hover:bg-[#edf9ff] hover:text-[#17a5fb] md:px-[14px] md:py-3 md:text-[14px] ${
                       index === 0 || option === companyType ? "bg-[#f5f7fa]" : ""
                     }`}
                   >
@@ -516,7 +522,7 @@ export default function RegistrationForm() {
             {errors.companyType ? (
               <span
                 id="companyType-error"
-                className="text-[12px] leading-snug text-[#dc2626]"
+                className="text-[11px] leading-snug text-[#dc2626] md:text-[12px]"
                 role="alert"
               >
                 {errors.companyType}
@@ -525,7 +531,7 @@ export default function RegistrationForm() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-x-2.5 gap-y-2.5 sm:gap-4">
           <Field
             id="country"
             label="Country"
@@ -546,12 +552,12 @@ export default function RegistrationForm() {
           />
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-x-2.5 gap-y-2.5 sm:gap-4">
           <Field
             id="phone"
             label="Phone"
             type="tel"
-            placeholder="Mobile number"
+            placeholder="Mobile no."
             icon="/assets/ic-phone.svg"
             value={form.phone}
             error={errors.phone}
@@ -561,7 +567,7 @@ export default function RegistrationForm() {
           <Field
             id="industry"
             label="Industry"
-            placeholder="e.g. Technology, Finance"
+            placeholder="e.g. Tech"
             value={form.industry}
             error={errors.industry}
             onChange={update("industry")}
@@ -570,18 +576,18 @@ export default function RegistrationForm() {
         </div>
       </div>
 
-      <div className="flex w-full flex-col gap-3.5">
-        <p className="text-[13px] font-medium leading-normal text-black">
+      <div className="flex w-full flex-col gap-2 sm:gap-3.5">
+        <p className="text-[12px] font-medium leading-snug text-black md:text-[13px]">
           I am completing this form in connection with my
         </p>
-        <div className="flex w-full flex-col gap-1.5 sm:flex-row sm:gap-1.5">
+        <div className="flex w-full flex-row gap-1.5">
           <button
             type="button"
             onClick={() => {
               setInterest("business");
               clearError("interest");
             }}
-            className={`flex h-[30px] flex-1 items-center justify-center gap-2.5 rounded-[42px] px-[14px] text-[14px] transition-all duration-200 ease-out ${
+            className={`flex h-[28px] flex-1 items-center justify-center gap-1.5 rounded-[42px] px-2 text-[11px] transition-all duration-200 ease-out sm:h-[30px] sm:gap-2.5 sm:px-[14px] sm:text-[14px] ${
               interest === "business"
                 ? "bg-[#edf9ff] font-medium text-black"
                 : "rounded-[32px] border-[0.7px] border-[#d8dee8] bg-[#fbfcfe] font-normal text-[#828282] hover:border-[#17a5fb] hover:bg-[#edf9ff] hover:text-black"
@@ -596,9 +602,10 @@ export default function RegistrationForm() {
               alt=""
               width={16}
               height={16}
-              className="size-4"
+              className="size-3.5 sm:size-4"
             />
-            Business interest
+            Business
+            <span className="hidden sm:inline"> interest</span>
           </button>
           <button
             type="button"
@@ -606,7 +613,7 @@ export default function RegistrationForm() {
               setInterest("personal");
               clearError("interest");
             }}
-            className={`flex h-[30px] flex-1 items-center justify-center gap-2.5 rounded-[32px] px-[14px] text-[14px] transition-all duration-200 ease-out ${
+            className={`flex h-[28px] flex-1 items-center justify-center gap-1.5 rounded-[32px] px-2 text-[11px] transition-all duration-200 ease-out sm:h-[30px] sm:gap-2.5 sm:px-[14px] sm:text-[14px] ${
               interest === "personal"
                 ? "rounded-[42px] bg-[#edf9ff] font-medium text-black"
                 : "border-[0.7px] border-[#d8dee8] bg-[#fbfcfe] font-normal text-[#828282] hover:border-[#17a5fb] hover:bg-[#edf9ff] hover:text-black"
@@ -621,20 +628,25 @@ export default function RegistrationForm() {
               alt=""
               width={16}
               height={16}
-              className="size-4"
+              className="size-3.5 sm:size-4"
             />
-            Personal interest
+            Personal
+            <span className="hidden sm:inline"> interest</span>
           </button>
         </div>
         {errors.interest ? (
-          <span id="interest-error" className="text-[12px] leading-snug text-[#dc2626]" role="alert">
+          <span
+            id="interest-error"
+            className="text-[11px] leading-snug text-[#dc2626] md:text-[12px]"
+            role="alert"
+          >
             {errors.interest}
           </span>
         ) : null}
       </div>
 
       {error ? (
-        <p className="rounded-lg bg-[#fef2f2] px-3 py-2 text-[13px] text-[#dc2626]">
+        <p className="rounded-lg bg-[#fef2f2] px-3 py-2 text-[12px] text-[#dc2626] md:text-[13px]">
           {error}
         </p>
       ) : null}
@@ -642,7 +654,7 @@ export default function RegistrationForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="group/submit inline-flex h-[46px] w-full items-center justify-center gap-2 rounded-lg bg-[#17a5fb] px-5 text-[15px] font-bold text-white transition-all duration-200 ease-out hover:bg-[#0f96ea] disabled:cursor-not-allowed disabled:opacity-70"
+        className="group/submit inline-flex h-[40px] w-full items-center justify-center gap-2 rounded-lg bg-[#17a5fb] px-5 text-[14px] font-bold text-white transition-all duration-200 ease-out hover:bg-[#0f96ea] disabled:cursor-not-allowed disabled:opacity-70 md:h-[46px] md:text-[15px]"
       >
         {submitting ? "Submitting..." : "Request to Attend"}
         {!submitting ? (
