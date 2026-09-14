@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AWS GenAI Roadshow
 
-## Getting Started
+Static landing page for the AWS GenAI Roadshow event, hosted by AWS and CloudKeeper.
 
-First, run the development server:
+## Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+index.html      — Main page
+css/styles.css  — Styles
+js/main.js      — Navigation, form validation, HubSpot submission
+assets/         — Images and SVGs
+fonts/          — Metropolis web fonts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local preview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open `index.html` in a browser, or serve the folder with any static file server:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+python3 -m http.server 8080
+```
 
-## Learn More
+Then visit [http://localhost:8080](http://localhost:8080).
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deploy the root folder to any static host (Vercel, Netlify, S3, etc.). No build step required.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Form
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Registration submits directly to HubSpot Forms API from the browser.
