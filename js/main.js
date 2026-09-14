@@ -85,24 +85,28 @@
       ".hero-brand",
       ".info-item",
       ".hero-tagline",
-      ".about-grid > h2",
-      ".about-text > p",
+      ".about-heading",
+      ".about-lead",
       ".about-divider",
+      ".about-text > p:not(.about-lead)",
       ".about-logos",
       ".speakers-section > h2",
-      ".speaker-row",
-      ".speaker-card",
       ".agenda-header > h2",
       ".agenda-header > p",
       ".session-card",
       ".who-intro > h2",
       ".who-intro > p",
-      ".audience-card",
       ".prerequisites",
       ".cta-brand-top",
       ".cta-collab",
       ".cta-tagline-wrap",
       ".btn-cta",
+    ];
+
+    const cardTargets = [
+      ".speaker-row",
+      ".speaker-card",
+      ".audience-card",
     ];
 
     const scaleTargets = [".register-form"];
@@ -124,6 +128,10 @@
       el.classList.add("reveal");
     });
 
+    document.querySelectorAll(cardTargets.join(",")).forEach((el) => {
+      el.classList.add("reveal-card");
+    });
+
     document.querySelectorAll(scaleTargets.join(",")).forEach((el) => {
       el.classList.add("reveal-scale");
     });
@@ -133,15 +141,18 @@
         const children = Array.from(group.children).filter(
           (child) =>
             child.classList.contains("reveal") ||
-            child.classList.contains("reveal-scale"),
+            child.classList.contains("reveal-scale") ||
+            child.classList.contains("reveal-card"),
         );
+        const step = group.matches(".speakers-desktop, .speakers-mobile, .audience-grid")
+          ? 110
+          : 80;
         children.forEach((child, index) => {
-          child.style.setProperty("--reveal-delay", `${index * 80}ms`);
+          child.style.setProperty("--reveal-delay", `${index * step}ms`);
         });
       });
     });
 
-    // Hero left column cascade
     const heroCascade = document.querySelectorAll(
       ".agentic-day, .hero-brand, .info-item, .hero-tagline, .register-form",
     );
@@ -155,15 +166,28 @@
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          const el = entry.target;
+          el.classList.add("is-visible");
+
+          if (el.classList.contains("reveal-card")) {
+            const onEnd = (event) => {
+              if (event.target !== el) return;
+              el.classList.add("reveal-done");
+              el.removeEventListener("animationend", onEnd);
+            };
+            el.addEventListener("animationend", onEnd);
+            // Fallback if animationend missed
+            window.setTimeout(() => el.classList.add("reveal-done"), 1200);
+          }
+
+          observer.unobserve(el);
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
     );
 
     document
-      .querySelectorAll(".reveal, .reveal-scale")
+      .querySelectorAll(".reveal, .reveal-scale, .reveal-card")
       .forEach((el) => observer.observe(el));
   }
 
