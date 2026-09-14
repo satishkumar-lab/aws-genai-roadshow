@@ -1,0 +1,32 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="720" height="120" viewBox="0 0 720 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Component 1" opacity="0.2" clip-path="url(#clip0_0_645)">
+<path id="Vector" d="M-9.6 119.52H364.8" stroke="#17A5FB" stroke-opacity="0.9" stroke-width="0.48"/>
+<path id="Vector_2" d="M17.28 119.52V75.36H27.84V66.72H64.32V75.36H74.88V119.52" stroke="white" stroke-width="0.672"/>
+<path id="Vector_3" d="M27.84 75.36H64.32" stroke="white" stroke-width="0.672"/>
+<path id="Vector_4" d="M34.56 119.52V90.72C34.56 85.6278 36.3806 80.7443 39.6212 77.1436C42.8618 73.5429 47.2571 71.52 51.84 71.52C56.4229 71.52 60.8182 73.5429 64.0588 77.1436C67.2994 80.7443 69.12 85.6278 69.12 90.72V119.52" stroke="#17A5FB" stroke-width="0.72"/>
+<path id="Vector_5" d="M41.28 66.72H64.32V75.36" stroke="white" stroke-width="0.576"/>
+<path id="Vector_6" d="M41.28 66.72C48.96 53.28 56.64 53.28 64.32 66.72" stroke="#17A5FB" stroke-width="0.672"/>
+<path id="Vector_7" d="M85.44 119.52V57.12H98.88V119.52" stroke="white" stroke-width="0.576"/>
+<path id="Vector_8" d="M88.32 63.84H96M88.32 71.52H96M88.32 79.2H96M88.32 86.88H96M88.32 94.56H96" stroke="#17A5FB" stroke-opacity="0.7" stroke-width="0.48"/>
+<path id="Vector_9" d="M104.64 119.52V41.76H121.92V119.52" stroke="white" stroke-width="0.576"/>
+<path id="Vector_10" d="M108.48 49.44H118.08M108.48 57.12H118.08M108.48 64.8H118.08M108.48 72.48H118.08M108.48 80.16H118.08M108.48 87.84H118.08" stroke="#17A5FB" stroke-opacity="0.7" stroke-width="0.48"/>
+<path id="Vector_11" d="M127.68 119.52V71.52H138.24V119.52" stroke="white" stroke-width="0.576"/>
+<path id="Vector_12" d="M144.96 119.52V35.04H165.12V119.52" stroke="white" stroke-width="0.576"/>
+<path id="Vector_13" d="M148.8 42.72H161.28M148.8 50.4H161.28M148.8 58.08H161.28M148.8 65.76H161.28M148.8 73.44H161.28M148.8 81.12H161.28M148.8 88.8H161.28" stroke="#17A5FB" stroke-opacity="0.65" stroke-width="0.48"/>
+<path id="Vector_14" d="M170.88 119.52V61.92H185.28V119.52" stroke="white" stroke-width="0.576"/>
+<path id="Vector_15" d="M192 119.52V46.56H203.52V119.52" stroke="white" stroke-width="0.576"/>
+<path id="Vector_16" d="M194.88 54.24H200.64M194.88 61.92H200.64M194.88 69.6H200.64M194.88 77.28H200.64" stroke="#17A5FB" stroke-opacity="0.55" stroke-width="0.48"/>
+<path id="Vector_17" d="M210.24 119.52V76.32H229.44V119.52" stroke="white" stroke-width="0.576"/>
+<path id="Vector_18" d="M236.16 119.52V53.28H252.48V119.52" stroke="white" stroke-width="0.576"/>
+<path id="Vector_19" d="M240 60.96H248.64M240 68.64H248.64M240 76.32H248.64M240 84H248.64" stroke="#17A5FB" stroke-opacity="0.45" stroke-width="0.48"/>
+<path id="Vector_20" d="M259.2 119.52V81.12H283.2V119.52" stroke="white" stroke-width="0.528"/>
+<path id="Vector_21" d="M289.92 119.52V66.72H303.36V119.52" stroke="white" stroke-width="0.528"/>
+<path id="Vector_22" d="M90.24 53.376C90.8232 53.376 91.296 52.9032 91.296 52.32C91.296 51.7368 90.8232 51.264 90.24 51.264C89.6568 51.264 89.184 51.7368 89.184 52.32C89.184 52.9032 89.6568 53.376 90.24 53.376Z" fill="#17A5FB"/>
+<path id="Vector_23" d="M155.04 32.256C155.623 32.256 156.096 31.7832 156.096 31.2C156.096 30.6168 155.623 30.144 155.04 30.144C154.457 30.144 153.984 30.6168 153.984 31.2C153.984 31.7832 154.457 32.256 155.04 32.256Z" fill="#ED0082" fill-opacity="0.85"/>
+</g>
+<defs>
+<clipPath id="clip0_0_645">
+<rect width="720" height="120" fill="white"/>
+</clipPath>
+</defs>
+</svg>
