@@ -211,118 +211,11 @@
           <img src="assets/hero-dot-2.svg" alt="" class="hero-dot hero-dot-2" width="14" height="14" aria-hidden="true" />
         </div>
 
-        <!-- Registration Form -->
+        <!-- Registration Form (native HubSpot embed) -->
         <div class="form-wrap" id="form-wrap">
-          <form id="register-form" class="register-form" novalidate>
-            <div class="form-header">
-              <h2>Register your interest</h2>
-              <p class="form-mandatory">All fields mandatory<span class="asterisk">*</span></p>
-            </div>
-
-            <div class="form-fields">
-              <div class="field" data-field="name">
-                <label class="field-label" for="field-name">Name</label>
-                <span class="field-input-wrap">
-                  <img src="assets/ic-user.svg" alt="" width="16" height="16" aria-hidden="true" />
-                  <input id="field-name" name="name" type="text" placeholder="Full name" autocomplete="name" />
-                </span>
-                <span id="name-error" class="field-error" role="alert" hidden></span>
-              </div>
-
-              <div class="field" data-field="email">
-                <label class="field-label" for="field-email">Work Email</label>
-                <span class="field-input-wrap">
-                  <img src="assets/ic-email.svg" alt="" width="16" height="16" aria-hidden="true" />
-                  <input id="field-email" name="email" type="email" placeholder="Work email" autocomplete="email" />
-                </span>
-                <span id="email-error" class="field-error" role="alert" hidden></span>
-              </div>
-
-              <div class="field" data-field="organization">
-                <label class="field-label" for="field-organization">Organization</label>
-                <span class="field-input-wrap">
-                  <input id="field-organization" name="organization" type="text" placeholder="Company name" autocomplete="organization" />
-                </span>
-                <span id="organization-error" class="field-error" role="alert" hidden></span>
-              </div>
-
-              <div class="form-grid-2">
-                <div class="field" data-field="role">
-                  <label class="field-label" for="field-role">Role</label>
-                  <span class="field-input-wrap">
-                    <input id="field-role" name="role" type="text" placeholder="e.g. Developer" autocomplete="organization-title" />
-                  </span>
-                  <span id="role-error" class="field-error" role="alert" hidden></span>
-                </div>
-                <div class="field dropdown-wrap" data-field="companyType">
-                  <span class="field-label">Company type</span>
-                  <button type="button" class="dropdown-btn" id="company-type-btn" aria-haspopup="listbox" aria-expanded="false">
-                    <span class="dropdown-value" id="company-type-value">Select</span>
-                    <img src="assets/ic-chevron.svg" alt="" width="12" height="12" aria-hidden="true" />
-                  </button>
-                  <div class="dropdown-menu" id="company-type-menu" role="listbox" hidden></div>
-                  <span id="companyType-error" class="field-error" role="alert" hidden></span>
-                </div>
-              </div>
-
-              <div class="form-grid-2">
-                <div class="field" data-field="country">
-                  <label class="field-label" for="field-country">Country</label>
-                  <span class="field-input-wrap">
-                    <input id="field-country" name="country" type="text" placeholder="e.g. India" autocomplete="country-name" />
-                  </span>
-                  <span id="country-error" class="field-error" role="alert" hidden></span>
-                </div>
-                <div class="field" data-field="city">
-                  <label class="field-label" for="field-city">City</label>
-                  <span class="field-input-wrap">
-                    <input id="field-city" name="city" type="text" placeholder="e.g. Mumbai" autocomplete="address-level2" />
-                  </span>
-                  <span id="city-error" class="field-error" role="alert" hidden></span>
-                </div>
-              </div>
-
-              <div class="form-grid-2">
-                <div class="field" data-field="phone">
-                  <label class="field-label" for="field-phone">Phone</label>
-                  <span class="field-input-wrap">
-                    <img src="assets/ic-phone.svg" alt="" width="16" height="16" aria-hidden="true" />
-                    <input id="field-phone" name="phone" type="tel" placeholder="Mobile no." autocomplete="tel" />
-                  </span>
-                  <span id="phone-error" class="field-error" role="alert" hidden></span>
-                </div>
-                <div class="field" data-field="industry">
-                  <label class="field-label" for="field-industry">Industry</label>
-                  <span class="field-input-wrap">
-                    <input id="field-industry" name="industry" type="text" placeholder="e.g. Tech" />
-                  </span>
-                  <span id="industry-error" class="field-error" role="alert" hidden></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="interest-section" data-field="interest">
-              <p class="interest-label">I am completing this form in connection with my</p>
-              <div class="interest-btns">
-                <button type="button" class="interest-btn is-active" data-interest="business">
-                  <img src="assets/ic-radio-on.svg" alt="" width="16" height="16" aria-hidden="true" />
-                  Business<span class="interest-suffix"> interest</span>
-                </button>
-                <button type="button" class="interest-btn" data-interest="personal">
-                  <img src="assets/ic-radio-off.svg" alt="" width="16" height="16" aria-hidden="true" />
-                  Personal<span class="interest-suffix"> interest</span>
-                </button>
-              </div>
-              <span id="interest-error" class="field-error" role="alert" hidden></span>
-            </div>
-
-            <p id="form-error-banner" class="form-error-banner" hidden role="alert"></p>
-
-            <button type="submit" class="btn-submit" id="submit-btn">
-              Request to Attend
-              <img src="assets/ic-arrow.svg" alt="" width="17" height="17" aria-hidden="true" />
-            </button>
-          </form>
+          <div class="register-form hs-embed-card">
+            <div id="hubspot-form"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -662,6 +555,59 @@
     </div>
   </footer>
 
+  <script charset="utf-8" type="text/javascript" src="https://js.hsforms.net/forms/embed/v2.js"></script>
+  <script>
+    (function () {
+      var SUCCESS_HTML =
+        '<div class="success-card" role="status" aria-live="polite">' +
+          '<img class="success-glow-left" src="assets/success-glow-left.svg" alt="" width="220" height="220" aria-hidden="true" />' +
+          '<img class="success-glow-right" src="assets/success-glow-right.svg" alt="" width="180" height="180" aria-hidden="true" />' +
+          '<div class="success-inner">' +
+            '<div class="success-hero">' +
+              '<span class="success-glow" aria-hidden="true"></span>' +
+              '<span class="success-check-ring success-check-ring--outer" aria-hidden="true"></span>' +
+              '<span class="success-check-ring success-check-ring--mid" aria-hidden="true"></span>' +
+              '<span class="success-check-ring success-check-ring--inner" aria-hidden="true"></span>' +
+              '<span class="success-burst success-burst--circle" style="width:8px;height:8px;background:#17a5fb;--burst-x:-72px;--burst-y:-58px;--burst-rot:18deg;animation-delay:0.05s" aria-hidden="true"></span>' +
+              '<span class="success-burst success-burst--ribbon" style="width:7px;height:17px;background:#ed0082;--burst-x:68px;--burst-y:-52px;--burst-rot:-24deg;animation-delay:0.08s" aria-hidden="true"></span>' +
+              '<span class="success-burst success-burst--diamond" style="width:6px;height:6px;background:#ff9900;--burst-x:-48px;--burst-y:-78px;--burst-rot:40deg;animation-delay:0.12s" aria-hidden="true"></span>' +
+              '<span class="success-burst success-burst--circle" style="width:7px;height:7px;background:#22c55e;--burst-x:42px;--burst-y:-82px;--burst-rot:-12deg;animation-delay:0.1s" aria-hidden="true"></span>' +
+              '<span class="success-burst success-burst--ribbon" style="width:6px;height:14px;background:#a855f7;--burst-x:-88px;--burst-y:-18px;--burst-rot:55deg;animation-delay:0.18s" aria-hidden="true"></span>' +
+              '<span class="success-burst success-burst--circle" style="width:8px;height:8px;background:#17a5fb;--burst-x:90px;--burst-y:-12px;--burst-rot:-35deg;animation-delay:0.15s" aria-hidden="true"></span>' +
+              '<span class="success-burst success-burst--diamond" style="width:5px;height:5px;background:#f472b6;--burst-x:-70px;--burst-y:28px;--burst-rot:28deg;animation-delay:0.22s" aria-hidden="true"></span>' +
+              '<span class="success-burst success-burst--circle" style="width:6px;height:6px;background:#ff9900;--burst-x:74px;--burst-y:32px;--burst-rot:-48deg;animation-delay:0.2s" aria-hidden="true"></span>' +
+              '<span class="success-burst success-burst--ribbon" style="width:5px;height:12px;background:#60a5fa;--burst-x:-28px;--burst-y:-96px;--burst-rot:8deg;animation-delay:0.14s" aria-hidden="true"></span>' +
+              '<span class="success-burst success-burst--circle" style="width:5px;height:5px;background:#34d399;--burst-x:18px;--burst-y:-98px;--burst-rot:-20deg;animation-delay:0.16s" aria-hidden="true"></span>' +
+              '<div class="success-check">' +
+                '<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+                  '<path class="success-check-mark" d="M12 24.5L20.5 33L36 15.5" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />' +
+                '</svg>' +
+              '</div>' +
+            '</div>' +
+            '<div class="success-copy">' +
+              '<p>Thank you for your interest.<br />The confirmation details will be sent to the registered Email ID.</p>' +
+              '<div class="success-divider" aria-hidden="true"></div>' +
+              '<p>Can\'t find the email? Check your Spam folder.</p>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      hbspt.forms.create({
+        region: "na2",
+        portalId: "47057450",
+        formId: "e7fb03ed-e9cc-45b3-956c-4196adf1f761",
+        target: "#hubspot-form",
+        css: "",
+        cssClass: "aws-roadshow-hs-form",
+        onFormSubmitted: function () {
+          var wrap = document.getElementById("form-wrap");
+          if (!wrap) return;
+          wrap.innerHTML = SUCCESS_HTML;
+          wrap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      });
+    })();
+  </script>
   <script src="js/main.js"></script>
 
   <!-- LinkedIn Insight Tag -->
