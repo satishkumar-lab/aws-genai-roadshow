@@ -1624,21 +1624,6 @@ a { text-decoration: none; color: inherit; }
   background: radial-gradient(circle at center, rgba(0,149,255,0.23) 0%, rgba(0,102,255,0) 70%);
 }
 
-.agenda-network {
-  pointer-events: none;
-  position: absolute;
-  right: -432px;
-  bottom: -387px;
-  display: none;
-  height: 714px;
-  width: 944px;
-  align-items: center;
-  justify-content: center;
-}
-
-.agenda-network > div { transform: rotate(-154.04deg); }
-.agenda-network img { height: 372px; width: 869px; max-width: none; }
-
 .agenda-flourish {
   pointer-events: none;
   position: absolute;
@@ -1790,7 +1775,6 @@ a { text-decoration: none; color: inherit; }
   .agenda { padding: 80px 0; }
   .agenda-glow-1, .agenda-glow-2 { width: 532px; height: 532px; }
   .agenda-glow-2 { width: 600px; height: 600px; }
-  .agenda-network { display: flex; }
   .agenda-flourish { display: block; height: 116px; width: 109px; }
   .agenda-inner { gap: 64px; padding-inline: 40px; }
   .agenda-header { flex-direction: row; align-items: flex-end; gap: 12px; }
@@ -2120,23 +2104,6 @@ a { text-decoration: none; color: inherit; }
   animation-delay: 1.4s;
 }
 
-.cta-network-wrap {
-  pointer-events: none;
-  position: absolute;
-  left: -84px;
-  top: auto;
-  bottom: -180px;
-  display: none;
-  height: 673px;
-  width: 701px;
-  align-items: center;
-  justify-content: center;
-  animation: cta-network-drift 14s ease-in-out infinite;
-}
-
-.cta-network-wrap > div { transform: rotate(-137.91deg); }
-.cta-network-wrap img { height: 291px; width: 681px; max-width: none; opacity: 0.9; }
-
 .cta-blur {
   pointer-events: none;
   position: absolute;
@@ -2256,7 +2223,6 @@ a { text-decoration: none; color: inherit; }
 @media (min-width: 768px) {
   .cta-section { padding: 72px 20px; }
   .cta-glow-img, .cta-blur { display: block; }
-  .cta-network-wrap { display: flex; }
   .cta-brand-top p { font-size: 56px; }
   .cta-collab > p { font-size: 26px; }
   .cta-collab img { height: 36px; }
@@ -2381,11 +2347,6 @@ a { text-decoration: none; color: inherit; }
 @keyframes cta-glow-pulse {
   0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
   50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.06); }
-}
-
-@keyframes cta-network-drift {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(10px, -8px, 0); }
 }
 
 @keyframes cta-tagline-shimmer {
@@ -2522,7 +2483,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cta-glow-main, .cta-glow-blue-img, .cta-network-wrap { animation: none; }
+  .cta-glow-main, .cta-glow-blue-img { animation: none; }
   .cta-tagline.is-shimmer {
     animation: none;
     background: none;
